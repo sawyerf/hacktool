@@ -6,11 +6,13 @@ import socket
 from .color import Color
 
 links = {
-    'linpeas.sh': 'https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh',
-    'pspy64': 'https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy64',
-    'pspy32': 'https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy32',
-    'lse.sh': 'https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh',
     'deepce.sh': 'https://github.com/stealthcopter/deepce/raw/main/deepce.sh',
+    'linpeas.sh': 'https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh',
+    'lse.sh': 'https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh',
+    'ncat': 'https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/ncat',
+    'nmap': 'https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/nmap',
+    'pspy32': 'https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy32',
+    'pspy64': 'https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy64',
     'winpeas.exe': 'https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe',
 }
 
