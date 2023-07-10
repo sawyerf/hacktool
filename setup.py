@@ -8,10 +8,14 @@ setup(
     packages=find_packages(include=[
         'hacktool', 'hacktool.*',
     ]),
+    install_requires=[
+        'requests',
+    ],
     entry_points={
         'console_scripts': [
             'resh=hacktool.resh:main',
             'httplog=hacktool.httplog:main',
+            'httpctf=hacktool.httpctf:main',
         ]
     }
 )
