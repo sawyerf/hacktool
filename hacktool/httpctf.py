@@ -20,6 +20,15 @@ class Redirect(BaseHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def index_page(self, urls):
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(b'<ul>\n')
+        for url in urls:
+            self.wfile.write(f'<li><a href="/{url}">{url}</a></li>\n'.encode())
+        self.wfile.write(b'</ul>')
+
     def do_GET(self):
         if self.path[1:] in links:
             r = requests.get(links[self.path[1:]])
@@ -30,14 +39,14 @@ class Redirect(BaseHTTPRequestHandler):
             else:
                 self.send_response(r.status_code)
                 self.end_headers()
+        elif self.path == '/linux':
+            self.index_page(['linpeas.sh', 'lse.sh', 'deepce.sh', 'ncat', 'nmap', 'pspy64'])
+        elif self.path == '/base':
+            self.index_page(['linpeas.sh', 'pspy64'])
+        elif self.path == '/win':
+            self.index_page(['winpeas.exe'])
         elif self.path == '/':
-            self.send_response(200)
-            self.send_header('Content-Type', 'text/html; charset=utf-8')
-            self.end_headers()
-            self.wfile.write(b'<ul>\n')
-            for link in links:
-                self.wfile.write(f'<li><a href="/{link}">{link}</a></li>\n'.encode())
-            self.wfile.write(b'</ul>')
+            self.index_page(links.keys())
         else:
             self.send_response(404)
             self.end_headers()
@@ -56,18 +65,21 @@ def main():
     g_opt, args = parseOpt()
 
     print(f'{Color.yellow}==============={Color.reset}')
-    print(f'IP:')
+    print(f'{Color.red}IP:{Color.reset}')
     ips = socket.gethostbyname_ex(socket.gethostname())[-1]
     for ip in ips:
         print(f'       {ip}')
     print(f'{Color.yellow}==============={Color.reset}')
-    print(f'LINKS:')
+    print(f'{Color.red}LINK:{Color.reset}')
     ip = ''
     if len(ips) == 1:
         ip = ips[0]
     print(f'       http://{ip}:{args[0]}/')
     for script in links:
         print(f'       http://{ip}:{args[0]}/{script}')
+    print(f'{Color.red}BUNDLE:{Color.reset}')
+    for bundle in ['base', 'linux', 'win']:
+        print(f'       http://{ip}:{args[0]}/{bundle}')
     print(f'{Color.yellow}==============={Color.reset}')
     print()
     print(f'{Color.green}[*]{Color.reset} Server Start\n')
