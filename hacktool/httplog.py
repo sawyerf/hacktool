@@ -4,6 +4,7 @@ from datetime import datetime
 from optparse import OptionParser
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from .color import Color
+from .ip import get_ips
 
 g_opt = None
 
@@ -60,6 +61,12 @@ def parseOpt():
 def main():
     global g_opt
     g_opt, args = parseOpt()
+    print(f'{Color.yellow}==============={Color.reset}')
+    print(f'{Color.red}LINK:{Color.reset}')
+    ips = get_ips()
+    for ip in ips:
+        print(f'       http://{ip}:{args[0]}/')
+    print(f'{Color.yellow}==============={Color.reset}')
     print(f'{Color.green}[*]{Color.reset} Server Start\n')
     server = HTTPServer(('0.0.0.0', int(args[0])), Redirect)
     server.serve_forever()

@@ -4,6 +4,7 @@ import requests
 import socket
 
 from .color import Color
+from .ip import get_ips
 
 links = {
     'deepce.sh': 'https://github.com/stealthcopter/deepce/raw/main/deepce.sh',
@@ -66,7 +67,7 @@ def main():
 
     print(f'{Color.yellow}==============={Color.reset}')
     print(f'{Color.red}IP:{Color.reset}')
-    ips = socket.gethostbyname_ex(socket.gethostname())[-1]
+    ips = get_ips()
     for ip in ips:
         print(f'       {ip}')
     print(f'{Color.yellow}==============={Color.reset}')
