@@ -162,6 +162,8 @@ def main():
 			if c == 'y':
 				sock.send(b'exit\n')
 				break
+		except UnicodeDecodeError:
+			pass
 		if c == '\r':
 			c = '\n'
 		elif c == '²' or c == 'Ω':
