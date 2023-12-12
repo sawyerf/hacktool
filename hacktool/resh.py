@@ -74,7 +74,7 @@ def generateCmdRow():
 	size = os.get_terminal_size()
 	return 'stty rows {} columns {}\n'.format(size.lines, size.columns).encode()
 
-def choice():
+def choice(sock):
 	cprint('\r\n')
 	cprint('(1) Exit\r\n')
 	cprint('(2) Resize Terminal\r\n')
@@ -168,7 +168,7 @@ def main():
 			sock.send(b'exit\n')
 			break
 		elif c == '\x13': # Ctrl+s
-			chc = choice()
+			chc = choice(sock)
 			if chc == '1':
 				break
 			c = ''
