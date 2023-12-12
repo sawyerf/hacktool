@@ -14,3 +14,5 @@ The httplog tool is an HTTP server that to log and display all incoming requests
 ### httpctf
 An HTTP server that automatically downloads and sends all common tools (linPEAS, pspy, etc).
 
+### Hacksheet
+A cheatsheet command to replace your brain when you need it the most.

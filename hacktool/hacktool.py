@@ -1,5 +1,5 @@
 def main():
-    print(''''
+    print('''
 Tools:
     httpctf      [PORT]
     httplog -frv [PORT]

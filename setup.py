@@ -13,6 +13,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
+            'hacksheet=hacktool.hacksheet:main',
             'hacktool=hacktool.hacktool:main',
             'httpctf=hacktool.httpctf:main',
             'httplog=hacktool.httplog:main',
