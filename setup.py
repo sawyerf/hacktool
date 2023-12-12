@@ -13,9 +13,10 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'resh=hacktool.resh:main',
-            'httplog=hacktool.httplog:main',
+            'hacktool=hacktool.hacktool:main',
             'httpctf=hacktool.httpctf:main',
+            'httplog=hacktool.httplog:main',
+            'resh=hacktool.resh:main',
         ]
     }
 )

@@ -9,7 +9,7 @@ from .ip import get_ips
 links = {
     'deepce.sh': 'https://github.com/stealthcopter/deepce/raw/main/deepce.sh',
     'linpeas.sh': 'https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh',
-    'lse.sh': 'https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh',
+    'lse.sh': 'https://github.com/diego-treitos/linux-smart-enumeration/releases/download/4.13nw/lse.sh',
     'ncat': 'https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/ncat',
     'nmap': 'https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/nmap',
     'pspy32': 'https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy32',
@@ -69,18 +69,18 @@ def main():
     print(f'{Color.red}IP:{Color.reset}')
     ips = get_ips()
     for ip in ips:
-        print(f'       {ip}')
+        print(f'       http://{ip}:9090/')
     print(f'{Color.yellow}==============={Color.reset}')
-    print(f'{Color.red}LINK:{Color.reset}')
+    print(f'{Color.red}PATH:{Color.reset}')
     ip = ''
     if len(ips) == 1:
         ip = ips[0]
-    print(f'       http://{ip}:{args[0]}/')
+    print(f'       /')
     for script in links:
-        print(f'       http://{ip}:{args[0]}/{script}')
+        print(f'       /{script}')
     print(f'{Color.red}BUNDLE:{Color.reset}')
     for bundle in ['base', 'linux', 'win']:
-        print(f'       http://{ip}:{args[0]}/{bundle}')
+        print(f'       /{bundle}')
     print(f'{Color.yellow}==============={Color.reset}')
     print()
     print(f'{Color.green}[*]{Color.reset} Server Start\n')

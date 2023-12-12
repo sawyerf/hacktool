@@ -50,7 +50,7 @@ class Redirect(BaseHTTPRequestHandler):
 def parseOpt():
     parser = OptionParser(usage='%prog [options] [PORT]')
     parser.add_option('-r', '--redirect', dest='redirect', default=None, type=str, help='Redirect')
-    parser.add_option('-v', '--verbose', dest='verbose', default=False, action='store_true', help='Verbose')
+    parser.add_option('-v', '--verbose', dest='verbose', default=True, action='store_false', help='Disable verbose')
     parser.add_option('-f', '--file', dest='file', default=None, type=str, help='File')
     options, args = parser.parse_args()
     if len(args) < 1:
